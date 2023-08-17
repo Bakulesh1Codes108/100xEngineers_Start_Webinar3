@@ -1,44 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Socket.io Chat</title>
-    <style>
-      /* Add some basic styling */
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-      li {
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 1px dotted #ddd;
-      }
-      #messages {
-        height: 300px;
-        overflow: auto;
-      }
-    </style>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(function () {
-        var socket = io();
-        $('form').submit(function() {
-          socket.emit('chat message', $('#input').val());
-          $('#input').val('');
-          return false;
-        });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-        });
-      });
-    </script>
-  </body>
+<head>
+  <title>Chat Application</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="http://localhost:4000/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span>Chat Application</span>
+    </div>
+    <div class="chat-container">
+      <div class="chat-left">
+        <div class="user-list">
+          <div class="user">Bakulesh</div>
+          <div class="user">Raj</div>
+          <div class="user">Prathamesh</div>
+          <div class="user">Yash</div>
+          <div class="user">Vivek</div>
+        </div>
+      </div>
+      <div class="chat-right">
+        <div class="message-container">
+          <div class="message received">Hello, Raj!</div>
+          <div class="message sent">Hi, Bakulesh! How are you?</div>
+          <div class="message received">I'm good, thanks. How about you?</div>
+        </div>
+        <div class="message-input">
+          <input type="text" placeholder="Type a message...">
+          <button id="sendButton">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
